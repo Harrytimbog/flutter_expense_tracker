@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './transaction.dart';
 import 'package:intl/intl.dart';
 
@@ -37,7 +38,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -46,6 +47,28 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               child: Text("CHART!"),
               elevation: 5,
+            ),
+          ),
+          Card(
+            elevation: 5,
+            child: Container(
+              padding: EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Title'),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Amount'),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(foregroundColor: Colors.purple),
+                    child: Text('Add Transaction'),
+                  )
+                ],
+              ),
             ),
           ),
           Column(
