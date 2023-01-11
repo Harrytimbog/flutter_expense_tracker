@@ -4,6 +4,9 @@ class NewTransaction extends StatelessWidget {
   // const NewTransaction({super.key});
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+  final Function addTx;
+
+  NewTransaction(this.addTx);
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +29,8 @@ class NewTransaction extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                // print(titleInput);
-                print(titleController.text);
+                addTx(
+                    titleController.text, double.parse(amountController.text));
               },
               style: TextButton.styleFrom(foregroundColor: Colors.purple),
               child: Text('Add Transaction'),
