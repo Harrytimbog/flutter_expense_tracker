@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import './widgets/transaction_list.dart';
 import './widgets/new_transaction.dart';
@@ -13,7 +15,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.purple,
         accentColor: Colors.amber,
-        // appBarTheme: Colors.something # if you want to change it but not always neccesary
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+            headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18)),
+        appBarTheme: AppBarTheme(
+          titleTextStyle: TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 20,
+              fontWeight: FontWeight.bold),
+        ),
       ),
       home: MyHomePage(),
     );
@@ -66,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Expen'),
+        title: Text('Personal Expense'),
         actions: [
           IconButton(
             onPressed: () => _startAddNewTransaction(context),
