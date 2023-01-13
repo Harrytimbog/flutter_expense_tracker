@@ -11,7 +11,8 @@ class ChartBar extends StatelessWidget {
   //     required this.spendingAmount,
   //     required this.spendingPctOfTotal});
 
-  ChartBar(this.label, this.spendingAmount, this.spendingPctOfTotal);
+  const ChartBar(this.label, this.spendingAmount, this.spendingPctOfTotal,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
