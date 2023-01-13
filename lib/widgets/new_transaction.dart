@@ -89,34 +89,41 @@ class _NewTransactionState extends State<NewTransaction> {
                             : 'Picked Date: ${DateFormat.yMd().format(_selectedDate!)}',
                       ),
                     ),
-                    TextButton(
-                        style: TextButton.styleFrom(
-                            foregroundColor:
-                                Theme.of(context).colorScheme.primary),
-                        onPressed: () {
-                          _presentDatePicker();
-                        },
-                        child: Text(
-                          'Choose Date',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ))
+                    Platform.isIOS
+                        ? CupertinoButton(
+                            child: Text(
+                              'Choose Date',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: _presentDatePicker,
+                          )
+                        : TextButton(
+                            style: TextButton.styleFrom(
+                                foregroundColor:
+                                    Theme.of(context).colorScheme.primary),
+                            onPressed: () {
+                              _presentDatePicker();
+                            },
+                            child: Text(
+                              'Choose Date',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ))
                   ],
                 ),
               ),
-              Platform.isIOS
-                  ? CupertinoButton(
-                      child: Text('Add Transaction'),
-                      onPressed: _submitData,
-                      color: Theme.of(context).colorScheme.primary,
-                    )
-                  : ElevatedButton(
-                      onPressed: _submitData,
-                      style: TextButton.styleFrom(
-                          backgroundColor: Theme.of(context).primaryColor,
-                          foregroundColor:
-                              Theme.of(context).textTheme.button!.color),
-                      child: Text('Add Transaction'),
-                    )
+              // Platform.isIOS
+              //     ? CupertinoButton(
+              //         child: Text('Add Transaction'),
+              //         onPressed: _submitData,
+              //         color: Theme.of(context).colorScheme.primary,
+              //       )
+              ElevatedButton(
+                onPressed: _submitData,
+                style: TextButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Theme.of(context).textTheme.button!.color),
+                child: Text('Add Transaction'),
+              )
             ],
           ),
         ),
